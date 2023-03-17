@@ -13,4 +13,4 @@ This repository contains my notes about deep reinforcement learning course in NJ
 
 - [深度强化学习(王志)](https://heyuanmingong.github.io/teaching.html)
 
-- [初探强化学习](https://hrl.boyuai.com/chapter/intro)
+- [动手学强化学习](https://hrl.boyuai.com/chapter/intro)
