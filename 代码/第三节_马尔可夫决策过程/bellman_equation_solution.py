@@ -26,4 +26,4 @@ def compute(P, rewards, gamma, states_num):
     return value
 
 V = compute(P, rewards, gamma, 6)
-print("MRP中每个状态价值分别为\n", V)
+# print("MRP中每个状态价值分别为\n", V)

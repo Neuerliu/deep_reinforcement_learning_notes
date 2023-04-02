@@ -122,3 +122,9 @@ P_from_mdp_to_mrp = convert_P_mdp2mrp(P, Pi_1, S, A)
 R_from_mdp_to_mrp = convert_R_mdp2mrp(R, Pi_1, S, A)
 V = compute(P_from_mdp_to_mrp, R_from_mdp_to_mrp, gamma, 5)
 print("策略1 MDP中每个状态价值分别为\n", V)
+
+# 求解策略2下的状态转移函数，以此求解状态价值函数
+P_from_mdp_to_mrp = convert_P_mdp2mrp(P, Pi_2, S, A)
+R_from_mdp_to_mrp = convert_R_mdp2mrp(R, Pi_2, S, A)
+V = compute(P_from_mdp_to_mrp, R_from_mdp_to_mrp, gamma, 5)
+print("策略2 MDP中每个状态价值分别为\n", V)
