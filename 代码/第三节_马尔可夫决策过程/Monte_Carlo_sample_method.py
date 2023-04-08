@@ -113,11 +113,6 @@ def sample(MDP, Pi, timestep_max, number):
 
     return episodes
 
-# 采用策略1，采样5次，每个序列的最大时间步长为20
-episodes = sample(MDP, Pi_1, 20, 5)
-print("第一条序列\n", episodes[0])
-print("第二条序列\n", episodes[1])
-print("第三条序列\n", episodes[2])
 
 # 对所有采样序列计算所有状态的价值
 def MC(episodes, V, N, gamma):
@@ -139,10 +134,18 @@ def MC(episodes, V, N, gamma):
             N[s] = N[s] + 1 # 状态s访问次数更新
             V[s] = V[s] + (G - V[s]) / N[s] # 状态价值更新
 
-timestep_max = 20
-# 采样1000次,可以自行修改
-episodes = sample(MDP, Pi_1, timestep_max, 1000)
-V = {"s1": 0, "s2": 0, "s3": 0, "s4": 0, "s5": 0}
-N = {"s1": 0, "s2": 0, "s3": 0, "s4": 0, "s5": 0}
-MC(episodes, V, N, gamma)
-print("使用蒙特卡洛方法计算MDP的状态价值为\n", V)
+if __name__ == "__main__":
+    # 采用策略1，采样5次，每个序列的最大时间步长为20
+    episodes = sample(MDP, Pi_1, 20, 5)
+    print("第一条序列\n", episodes[0])
+    print("第二条序列\n", episodes[1])
+    print("第三条序列\n", episodes[2])
+
+
+    timestep_max = 20
+    # 采样1000次,可以自行修改
+    episodes = sample(MDP, Pi_1, timestep_max, 1000)
+    V = {"s1": 0, "s2": 0, "s3": 0, "s4": 0, "s5": 0}
+    N = {"s1": 0, "s2": 0, "s3": 0, "s4": 0, "s5": 0}
+    MC(episodes, V, N, gamma)
+    print("使用蒙特卡洛方法计算MDP的状态价值为\n", V)

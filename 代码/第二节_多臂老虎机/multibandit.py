@@ -92,10 +92,10 @@ def plot_results(solvers, solver_names):
     plt.legend()
     plt.show()
 
-
-# 随机生成多臂老虎机
-np.random.seed(1) # 设定随机数种子
-K = 10 # 10臂老虎机
-bandit_10_arm = BernoulliBandit(K)
-print("随机生成了一个%d臂伯努利老虎机" % K)
-print("获奖概率最大的拉杆为%d号,其获奖概率为%.4f" % (bandit_10_arm.best_idx, bandit_10_arm.best_prob))
+if __name__ == "__main__":
+    # 随机生成多臂老虎机
+    np.random.seed(1) # 设定随机数种子
+    K = 10 # 10臂老虎机
+    bandit_10_arm = BernoulliBandit(K)
+    print("随机生成了一个%d臂伯努利老虎机" % K)
+    print("获奖概率最大的拉杆为%d号,其获奖概率为%.4f" % (bandit_10_arm.best_idx, bandit_10_arm.best_prob))

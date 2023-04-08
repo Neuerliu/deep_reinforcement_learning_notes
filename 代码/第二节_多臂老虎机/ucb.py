@@ -35,14 +35,15 @@ class UCB(Solver):
 
         return k
 
-# 初始化10-臂老虎机
-np.random.seed(1) # 设定随机数种子
-K = 10 # 10臂老虎机
-bandit_10_arm = BernoulliBandit(K)
+if __name__ == "__main__":
+    # 初始化10-臂老虎机
+    np.random.seed(1) # 设定随机数种子
+    K = 10 # 10臂老虎机
+    bandit_10_arm = BernoulliBandit(K)
 
-np.random.seed(1)
-coef = 1 # 控制不确定性比重的系数
-UCB_solver = UCB(bandit_10_arm, coef)
-UCB_solver.run(5000)
-print('上置信界算法的累积懊悔为：', UCB_solver.regret)
-plot_results([UCB_solver], ["UCB"])
+    np.random.seed(1)
+    coef = 1 # 控制不确定性比重的系数
+    UCB_solver = UCB(bandit_10_arm, coef)
+    UCB_solver.run(5000)
+    print('上置信界算法的累积懊悔为：', UCB_solver.regret)
+    plot_results([UCB_solver], ["UCB"])

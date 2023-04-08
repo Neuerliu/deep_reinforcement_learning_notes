@@ -25,14 +25,15 @@ class ThompsonSampling(Solver):
 
         return k
 
-# 初始化10-臂老虎机
-np.random.seed(1) # 设定随机数种子
-K = 10 # 10臂老虎机
-bandit_10_arm = BernoulliBandit(K)
+if __name__ == "__main__":
+    # 初始化10-臂老虎机
+    np.random.seed(1) # 设定随机数种子
+    K = 10 # 10臂老虎机
+    bandit_10_arm = BernoulliBandit(K)
 
-# 使用汤普森采样算法
-np.random.seed(1)
-thompson_sampling_solver = ThompsonSampling(bandit_10_arm)
-thompson_sampling_solver.run(5000)
-print('汤普森采样算法的累积懊悔为：', thompson_sampling_solver.regret)
-plot_results([thompson_sampling_solver], ["ThompsonSampling"])
+    # 使用汤普森采样算法
+    np.random.seed(1)
+    thompson_sampling_solver = ThompsonSampling(bandit_10_arm)
+    thompson_sampling_solver.run(5000)
+    print('汤普森采样算法的累积懊悔为：', thompson_sampling_solver.regret)
+    plot_results([thompson_sampling_solver], ["ThompsonSampling"])
