@@ -1,5 +1,5 @@
 import copy
-from cliff_walking_env import CliffWalkingEnv
+from cliff_walking_env import CliffWalkingEnv, print_agent
 
 # 基于悬崖漫步环境下的策略梯度法
 # 策略迭代
@@ -80,40 +80,6 @@ class PolicyIteration:
             new_pi = self.policy_improvement()
             if old_pi == new_pi:
                 break # 停止策略迭代
-
-# 可视化策略                     
-def print_agent(agent, action_meaning, disaster=[], end=[]):
-    '''
-    可视化策略
-
-    输入:
-    agent:智能体对象
-    action_meaning:动作含义
-    disaster:悬崖状态列表
-    end:终点状态列表
-    '''
-    print("状态价值：")
-    for i in range(agent.env.nrow):
-        for j in range(agent.env.ncol):
-            # 为了输出美观,保持输出6个字符
-            print('%6.6s' % ('%.3f' % agent.v[i * agent.env.ncol + j]), end=' ')
-        print()
-
-    print("策略：")
-    for i in range(agent.env.nrow):
-        for j in range(agent.env.ncol):
-            # 一些特殊的状态,例如悬崖漫步中的悬崖
-            if (i * agent.env.ncol + j) in disaster: # 悬崖
-                print('****', end=' ')
-            elif (i * agent.env.ncol + j) in end:  # 目标状态
-                print('EEEE', end=' ')
-            else:
-                a = agent.pi[i * agent.env.ncol + j] # 采取动作a
-                pi_str = ''
-                for k in range(len(action_meaning)):
-                    pi_str += action_meaning[k] if a[k] > 0 else 'o'
-                print(pi_str, end=' ')
-        print()
 
 if __name__ == '__main__':
     env = CliffWalkingEnv()
