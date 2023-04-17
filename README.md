@@ -10,6 +10,7 @@ This repository contains my notes about deep reinforcement learning course in NJ
 |  2   |       [多臂老虎机](./笔记/第二节_多臂老虎机.md)       |    [code](./代码/第二节_多臂老虎机)    |
 |  3   | [马尔可夫决策过程](./笔记/第三节_马尔可夫决策过程.md) | [code](./代码/第三节_马尔可夫决策过程) |
 |  4   |     [动态规划算法](./笔记/第四节_动态规划算法.md)     |   [code](./代码/第四节_动态规划算法)   |
+|  5   |     [动态规划算法](./笔记/第五节_时序差分算法.md)     |   [code](./代码/第五节_时序差分算法)   |
 
 # Reference
 
