@@ -1,8 +1,3 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from tqdm import tqdm  # 显示循环进度条的库
-
-
 class CliffWalkingEnv:
     '''
     在Sarsa算法下的悬崖漫步环境
