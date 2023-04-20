@@ -109,15 +109,15 @@ if __name__ == '__main__':
                     })
                 pbar.update(1)
 
-# 打印回报变化过程
-# 此时的回报并不要折扣因子衰减
-episodes_list = list(range(len(return_list)))
-plt.plot(episodes_list, return_list)
-plt.xlabel('Episodes')
-plt.ylabel('Returns')
-plt.title('Sarsa on {}'.format('Cliff Walking'))
-plt.show()
+    # 打印回报变化过程
+    # 此时的回报并不要折扣因子衰减
+    episodes_list = list(range(len(return_list)))
+    plt.plot(episodes_list, return_list)
+    plt.xlabel('Episodes')
+    plt.ylabel('Returns')
+    plt.title('Sarsa on {}'.format('Cliff Walking'))
+    plt.show()
 
-action_meaning = ['^', 'v', '<', '>']
-print('Sarsa算法最终收敛得到的策略为：')
-print_agent(agent, env, action_meaning, list(range(37, 47)), [47])
+    action_meaning = ['^', 'v', '<', '>']
+    print('Sarsa算法最终收敛得到的策略为：')
+    print_agent(agent, env, action_meaning, list(range(37, 47)), [47])
