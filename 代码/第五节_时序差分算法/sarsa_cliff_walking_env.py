@@ -36,3 +36,25 @@ class CliffWalkingEnv:
         self.x = 0
         self.y = self.nrow - 1
         return self.y * self.ncol + self.x
+
+# 打印Sarsa的策略
+def print_agent(agent, env, action_meaning, disaster=[], end=[]):
+    '''
+    打印时序差分算法的策略
+    '''
+    for i in range(env.nrow):
+        for j in range(env.ncol):
+            if (i * env.ncol + j) in disaster:
+                # 到达悬崖位置
+                print('****', end=' ')
+            elif (i * env.ncol + j) in end:
+                # 到达终点
+                print('EEEE', end=' ')
+            else:
+                # 其他位置
+                a = agent.best_action(i * env.ncol + j) # 当前状态的最优策略
+                pi_str = ''
+                for k in range(len(action_meaning)):
+                    pi_str += action_meaning[k] if a[k] > 0 else 'o'
+                print(pi_str, end=' ')
+        print("")

@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm  # 显示循环进度条的库
 
-from sarsa_cliff_walking_env import CliffWalkingEnv
+from sarsa_cliff_walking_env import CliffWalkingEnv, print_agent
 
 # 定义Sarsa类
 class Sarsa:
@@ -41,28 +41,6 @@ class Sarsa:
     def update(self, s0, a0, r, s1, a1):
         td_error = r + self.gamma * self.Q_table[s1, a1] - self.Q_table[s0, a0]
         self.Q_table[s0, a0] += self.alpha * td_error
-
-# 打印Sarsa的策略
-def print_agent(agent, env, action_meaning, disaster=[], end=[]):
-    '''
-    打印时序差分算法的策略
-    '''
-    for i in range(env.nrow):
-        for j in range(env.ncol):
-            if (i * env.ncol + j) in disaster:
-                # 到达悬崖位置
-                print('****', end=' ')
-            elif (i * env.ncol + j) in end:
-                # 到达终点
-                print('EEEE', end=' ')
-            else:
-                # 其他位置
-                a = agent.best_action(i * env.ncol + j) # 当前状态的最优策略
-                pi_str = ''
-                for k in range(len(action_meaning)):
-                    pi_str += action_meaning[k] if a[k] > 0 else 'o'
-                print(pi_str, end=' ')
-        print("")
 
 if __name__ == '__main__':
     ncol = 12

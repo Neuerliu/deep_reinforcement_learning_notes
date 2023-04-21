@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from sarsa_cliff_walking_env import CliffWalkingEnv
+from sarsa_cliff_walking_env import CliffWalkingEnv, print_agent
 
 class nstep_sarsa:
     '''
@@ -129,3 +129,7 @@ if __name__ == '__main__':
     plt.ylabel('Returns')
     plt.title('5-step Sarsa on {}'.format('Cliff Walking'))
     plt.show()
+
+    action_meaning = ['^', 'v', '<', '>']
+    print('5步Sarsa算法最终收敛得到的策略为：')
+    print_agent(agent, env, action_meaning, list(range(37, 47)), [47])
