@@ -106,6 +106,7 @@ if __name__ == '__main__':
 
                 # 采样一条序列
                 while not done:
+                    # 目标策略和行为策略一致，均是epsilon-greedy
                     next_state, reward, done = env.step(action)
                     next_action = agent.take_action(next_state)
                     episode_return += reward  # 这里回报的计算不进行折扣因子衰减
