@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm  # 显示循环进度条的库
 
-from sarsa_cliff_walking_env import CliffWalkingEnv, print_agent
+from sarsa_utils import CliffWalkingEnv, print_agent
 
 # 定义Sarsa类
 class Sarsa:

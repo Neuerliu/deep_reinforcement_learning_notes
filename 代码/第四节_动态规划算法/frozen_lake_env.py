@@ -1,7 +1,7 @@
 import gym
 from policy_iteration import PolicyIteration
 from value_iteration import ValueIteration
-from cliff_walking_env import print_agent
+from dp_utils import print_agent
 
 # 使用gym环境
 env = gym.make('FrozenLake-v1', render_mode='rgb_array') # 还可以使用'human'

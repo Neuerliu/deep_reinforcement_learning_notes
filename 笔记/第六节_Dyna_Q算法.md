@@ -33,4 +33,40 @@ $for$ 序列$e=1 \rightarrow E \space do$ :
 
 ​		得到环境反馈的 $r, s^{\prime}$
 
-​		
+​		// 采用真实样本更新动作价值函数
+
+​		$Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \mathop{max}_{a^{\prime}}{Q(s^{\prime}, a^{\prime})} - Q(s, a)]$
+
+​		// 采用真实样本更新拟合的环境模型
+
+​		$M(s, a) \leftarrow r, s^{\prime}$
+
+​		$for$ 次数 $n=1 \rightarrow N \space do$ :
+
+​			随机选择一个曾经访问过的状态 $s_m$
+
+​			采取一个曾经在状态 $s_m$ 执行过的动作 $a_m$
+
+​			// 采用模型生成的模拟数据更新动作价值函数
+
+​			$r_m, s^{\prime}_m \leftarrow M(s_m, a_m)$
+
+​			$Q(s_m, a_m) \leftarrow Q(s_m, a_m) + \alpha [r_m + \gamma \mathop{max}_{a^{\prime}}{Q(s^{\prime}_m, a^{\prime})} - Q(s_m, a_m)]$
+
+​		$end \space for$
+
+​		$s \leftarrow s^{\prime}$
+
+​	$end \space for$
+
+$end \space for$	
+
+在每次与环境进行交互执行一次Q-learning之后，Dyna-Q算法会做 $n$ 次Q-planning。其中Q-planning的次数 $n$ 是一个事先可以选择的超参数，**当其为 0 时就是普通的Q-learning**。值得注意的是，上述Dyna-Q算法是执行在一个离散并且确定的环境中，所以当看到一条经验数据 $(s, a, r, s^{\prime})$ 时，可以直接对模型做出更新，即 $M(s, a) \leftarrow r, s^{\prime}$。
+
+## 6.3 Dyna-Q代码实践
+
+我们在悬崖漫步环境中实现Dyna-Q算法，首先实现悬崖漫步的环境代码：
+
+```python
+```
+

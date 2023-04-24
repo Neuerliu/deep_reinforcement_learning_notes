@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from sarsa_cliff_walking_env import CliffWalkingEnv, print_agent
+from sarsa_utils import CliffWalkingEnv, print_agent
 
 class nstep_sarsa:
     '''

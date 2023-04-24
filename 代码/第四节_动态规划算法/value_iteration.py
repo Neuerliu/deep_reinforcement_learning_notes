@@ -1,5 +1,5 @@
 import numpy as np
-from cliff_walking_env import CliffWalkingEnv, print_agent
+from dp_utils import CliffWalkingEnv, print_agent
 
 class ValueIteration:
     '''
