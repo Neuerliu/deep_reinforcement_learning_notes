@@ -14,6 +14,8 @@ This repository contains my notes about deep reinforcement learning course in NJ
 |  6   |       [Dyna-Q算法](./笔记/第六节_Dyna_Q算法.md)       |    [code](./代码/第六节_Dyna_Q算法)    |
 |  7   |          [DQN算法](./笔记/第七节_DQN算法.md)          |     [code](./代码/第七节_DQN算法)      |
 
+强化学习中的重要概念详见[DRL_concepts](./笔记/重要概念.md)。
+
 # Reference
 
 - [深度强化学习(王志)](https://heyuanmingong.github.io/teaching.html)
