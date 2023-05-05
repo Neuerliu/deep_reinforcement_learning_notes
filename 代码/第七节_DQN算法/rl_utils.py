@@ -20,7 +20,7 @@ class ReplayBuffer:
         return len(self.buffer)
 
 def moving_average(a, window_size):
-    cumulative_sum = np.cumsum(np.insert(a, 0, 0)) 
+    cumulative_sum = np.cumsum(np.insert(a, 0, 0)) # 在index=0处插入0，并计算累积值
     middle = (cumulative_sum[window_size:] - cumulative_sum[:-window_size]) / window_size
     r = np.arange(1, window_size-1, 2)
     begin = np.cumsum(a[:window_size-1])[::2] / r
@@ -77,7 +77,6 @@ def train_off_policy_agent(env, agent, num_episodes, replay_buffer, minimal_size
                 pbar.update(1)
     return return_list
 
-
 def compute_advantage(gamma, lmbda, td_delta):
     td_delta = td_delta.detach().numpy()
     advantage_list = []
@@ -87,4 +86,3 @@ def compute_advantage(gamma, lmbda, td_delta):
         advantage_list.append(advantage)
     advantage_list.reverse()
     return torch.tensor(advantage_list, dtype=torch.float)
-                

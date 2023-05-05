@@ -1,5 +1,6 @@
 import random
 import gym
+# import gymnasium as gym
 import numpy as np
 import collections
 from tqdm import tqdm
@@ -87,7 +88,7 @@ class DQN:
 
     # 采样中采用epsilon-greedy策略
     def take_action(self, state):
-        if np.random.rand() < self.epsilon:
+        if np.random.random() < self.epsilon:
             action = np.random.randint(self.action_dim)
         else:
             state = torch.tensor([state], dtype=torch.float).to(self.device) # 状态转化为torch的tensor
@@ -138,7 +139,7 @@ if __name__ == "__main__":
 
     # gym环境设定
     env_name = 'CartPole-v1'
-    env = gym.make(env_name, render_mode='rgb_array')
+    env = gym.make(env_name) # , render_mode='rgb_array'
 
     # 设定随机数种子
     random.seed(0)
@@ -149,7 +150,6 @@ if __name__ == "__main__":
     replay_buffer = ReplayBuffer(buffer_size)
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.n
-    # print(state_dim, action_dim)
     agent = DQN(state_dim, hidden_dim, action_dim, lr, gamma, epsilon, target_update, device)
 
     return_list = []
@@ -161,7 +161,7 @@ if __name__ == "__main__":
                 done = False
                 while not done:
                     action = agent.take_action(state)
-                    next_state, reward, done, _ , _ = env.step(action) # 注意gym升级后，env.step返回observation, reward, terminated, truncated, info
+                    next_state, reward, done, _ , __ = env.step(action) # 注意gym升级后，env.step返回observation, reward, terminated, truncated, info
                     replay_buffer.add(state, action, reward, next_state, done)
                     state = next_state
                     episode_return += reward
@@ -187,3 +187,19 @@ if __name__ == "__main__":
                         'return': '%.3f' % np.mean(return_list[-10:])
                     })
                 pbar.update(1)
+
+    # 绘制每个序列的回报
+    episodes_list = list(range(len(return_list)))
+    plt.plot(episodes_list, return_list)
+    plt.xlabel('Episodes')
+    plt.ylabel('Returns')
+    plt.title('DQN on {}'.format(env_name))
+    plt.show()
+
+    # 计算序列奖励的滑动平均
+    mv_return = rl_utils.moving_average(return_list, 9)
+    plt.plot(episodes_list, mv_return)
+    plt.xlabel('Episodes')
+    plt.ylabel('Returns')
+    plt.title('DQN on {}'.format(env_name))
+    plt.show()
