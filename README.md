@@ -13,6 +13,7 @@ This repository contains my notes about deep reinforcement learning course in NJ
 |  5   |     [时序差分算法](./笔记/第五节_时序差分算法.md)     |   [code](./代码/第五节_时序差分算法)   |
 |  6   |       [Dyna-Q算法](./笔记/第六节_Dyna_Q算法.md)       |    [code](./代码/第六节_Dyna_Q算法)    |
 |  7   |          [DQN算法](./笔记/第七节_DQN算法.md)          |     [code](./代码/第七节_DQN算法)      |
+|  8   |      [DQN改进算法](./笔记/第八节_DQN改进算法.md)      |   [code](./代码/第八节_DQN改进算法)    |
 
 强化学习中的重要概念详见[DRL_concepts](./笔记/重要概念.md)。
 
